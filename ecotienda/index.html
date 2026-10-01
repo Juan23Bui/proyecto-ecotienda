@@ -1,0 +1,474 @@
+<!--
+    ============================================================
+    EVIDENCIA: GA7-220501102-AA1-EV01
+    ACTIVIDAD: Codificación de elementos y componentes gráficos e interactivos
+    PROYECTO: EcoTienda - Plataforma de comercio electrónico sostenible
+    AUTOR: Juan David Buitrago Cuellar
+    FECHA: Julio 2026
+    TECNOLOGÍAS: HTML5, CSS3, JavaScript
+    ============================================================
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EcoTienda - Plataforma de comercio electrónico de productos sostenibles y ecológicos">
+    <meta name="theme-color" content="#1a4d2e">
+    <title>EcoTienda - Productos sostenibles</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link" aria-label="Saltar al contenido principal">
+        Saltar al contenido principal
+    </a>
+
+    <div class="top-bar" role="banner" aria-label="Barra promocional">
+        <div class="top-bar-content">
+            <span>🌱 Envíos gratis en compras mayores a $150.000</span>
+            <span class="top-bar-divider">|</span>
+            <span>♻️ Compra sostenible, cuida el planeta</span>
+            <span class="top-bar-divider">|</span>
+            <span>📦 Despachos a todo Colombia</span>
+        </div>
+    </div>
+
+    <header class="main-header" role="banner" aria-label="Cabecera principal">
+        <div class="header-container">
+            
+            <div class="logo" aria-label="EcoTienda logo">
+                <span class="logo-icon" aria-hidden="true">🌿</span>
+                <span class="logo-text">EcoTienda</span>
+            </div>
+
+            <div class="search-container" role="search" aria-label="Búsqueda de productos">
+                <div class="search-bar">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="🔍 Buscar productos sostenibles..." 
+                        aria-label="Buscar productos"
+                        autocomplete="off"
+                    >
+                    <button id="searchBtn" aria-label="Realizar búsqueda">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                    </button>
+                </div>
+                <div id="searchSuggestions" class="search-suggestions" role="listbox" aria-label="Sugerencias de búsqueda"></div>
+            </div>
+
+            <div class="header-icons" role="navigation" aria-label="Iconos de navegación">
+                <button class="icon-btn" id="userIcon" aria-label="Iniciar sesión / Registrarse" aria-expanded="false">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="icon-label">Cuenta</span>
+                </button>
+                
+                <button class="icon-btn" id="cartIcon" aria-label="Abrir carrito de compras" aria-expanded="false">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                    <span class="icon-label">Carrito</span>
+                    <span class="cart-badge" id="cartCount" aria-label="Cantidad de productos en el carrito">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="categories-nav" aria-label="Categorías de productos">
+        <div class="categories-container" role="tablist">
+            <button class="category-btn active" data-categoria="todos" role="tab" aria-selected="true" aria-controls="productsGrid">
+                <span aria-hidden="true">🌱</span> Todos
+            </button>
+            <button class="category-btn" data-categoria="hogar" role="tab" aria-selected="false" aria-controls="productsGrid">
+                <span aria-hidden="true">🏠</span> Hogar
+            </button>
+            <button class="category-btn" data-categoria="moda" role="tab" aria-selected="false" aria-controls="productsGrid">
+                <span aria-hidden="true">👕</span> Moda
+            </button>
+            <button class="category-btn" data-categoria="alimentos" role="tab" aria-selected="false" aria-controls="productsGrid">
+                <span aria-hidden="true">🍎</span> Alimentos
+            </button>
+            <button class="category-btn" data-categoria="cuidado" role="tab" aria-selected="false" aria-controls="productsGrid">
+                <span aria-hidden="true">🧴</span> Cuidado personal
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">♻️ Compra consciente</span>
+                <h1 id="hero-title">Vive sostenible,<br>compra con propósito</h1>
+                <p class="hero-description">
+                    Productos ecológicos que cuidan el planeta y tu bienestar. 
+                    Cada compra aporta al cuidado del medio ambiente.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>
+                        <span class="stat-label">Productos eco</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="1200">0</span>
+                        <span class="stat-label">Clientes felices</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="85">0</span>
+                        <span class="stat-label">% reciclaje</span>
+                    </div>
+                </div>
+                <button class="hero-btn" id="heroBtn">
+                    <span aria-hidden="true">✨</span> Ver productos destacados
+                    <span aria-hidden="true" class="hero-btn-arrow">→</span>
+                </button>
+            </div>
+            <div class="hero-image" aria-hidden="true">
+                <div class="hero-illustration">
+                    <span class="float-icon" style="animation-delay: 0s;">🌳</span>
+                    <span class="float-icon" style="animation-delay: 1.5s;">🌿</span>
+                    <span class="float-icon" style="animation-delay: 3s;">🍃</span>
+                    <span class="float-icon" style="animation-delay: 4.5s;">🌎</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="main-content">
+
+        <div class="section-header">
+            <h2 class="section-title">🌿 Productos destacados</h2>
+            <p class="section-subtitle">Selección de nuestros productos más sostenibles</p>
+        </div>
+
+        <div id="loadingIndicator" class="loading-indicator" hidden>
+            <span class="spinner" aria-hidden="true"></span>
+            <span>Cargando productos...</span>
+        </div>
+
+        <div class="products-grid" id="productsGrid" role="list" aria-label="Lista de productos disponibles">
+        </div>
+
+        <div id="emptyMessage" class="empty-message" hidden>
+            <span aria-hidden="true">😢</span>
+            <p>No encontramos productos que coincidan con tu búsqueda.</p>
+            <button id="resetFilters" class="reset-btn">Ver todos los productos</button>
+        </div>
+
+        <section class="video-section" aria-labelledby="video-title">
+            <div class="video-container">
+                <div class="video-header">
+                    <div class="video-header-text">
+                        <span class="video-badge">🎬 Tutorial</span>
+                        <h2 id="video-title">Aprende a reciclar en casa</h2>
+                        <p>Conviértete en un experto del reciclaje con este tutorial interactivo</p>
+                    </div>
+                    <span class="video-duration">⏱️ 2:30 min</span>
+                </div>
+
+                <div class="video-player">
+                    <div class="video-mockup" role="region" aria-label="Reproductor de video tutorial">
+                        <div class="video-screen" id="videoScreen" role="img" aria-label="Video tutorial cómo reciclar en casa">
+                            <div class="video-placeholder" id="videoPlaceholder">
+                                <button class="play-btn" id="playVideoBtn" aria-label="Reproducir video tutorial">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                        <polygon points="5,3 19,12 5,21"/>
+                                    </svg>
+                                </button>
+                                <span class="video-watermark">🌿 EcoTienda</span>
+                                <div class="video-controls" id="videoControls" hidden>
+                                    <div class="control-bar">
+                                        <button class="ctrl-btn" id="playPauseBtn" aria-label="Pausar video">⏸️</button>
+                                        <span class="time-display" id="timeDisplay">00:00 / 02:30</span>
+                                        <button class="ctrl-btn" id="fullscreenBtn" aria-label="Pantalla completa">⛶</button>
+                                    </div>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso del video">
+                                        <div class="progress-fill" id="progressFill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="videoStatus" class="video-status">▶️ Haz clic para reproducir</div>
+                        </div>
+
+                        <div class="video-chapters" role="tablist" aria-label="Capítulos del video">
+                            <button class="chapter-btn active" data-chapter="intro" role="tab" aria-selected="true">
+                                <span aria-hidden="true">🎬</span> Intro
+                            </button>
+                            <button class="chapter-btn" data-chapter="separacion" role="tab" aria-selected="false">
+                                <span aria-hidden="true">🗑️</span> Separación
+                            </button>
+                            <button class="chapter-btn" data-chapter="limpieza" role="tab" aria-selected="false">
+                                <span aria-hidden="true">💧</span> Limpieza
+                            </button>
+                            <button class="chapter-btn" data-chapter="deposito" role="tab" aria-selected="false">
+                                <span aria-hidden="true">📍</span> Depósito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section" aria-labelledby="testimonials-title">
+            <h2 id="testimonials-title">💚 Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-grid" id="testimonialsGrid">
+            </div>
+        </section>
+
+        <section class="features-section" aria-labelledby="features-title">
+            <h2 id="features-title">🌱 ¿Por qué elegir EcoTienda?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">🌎</div>
+                    <h3>Productos sostenibles</h3>
+                    <p>Seleccionamos productos con certificación ecológica y bajo impacto ambiental.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">♻️</div>
+                    <h3>Envases reciclables</h3>
+                    <p>Todos nuestros envíos utilizan empaques 100% reciclables y biodegradables.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">🤝</div>
+                    <h3>Comercio justo</h3>
+                    <p>Trabajamos con productores locales que reciben una compensación justa.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" aria-hidden="true">📦</div>
+                    <h3>Envíos rápidos</h3>
+                    <p>Despachamos tu pedido en menos de 24 horas a todo el país.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" aria-labelledby="contact-title">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2 id="contact-title">📬 Contáctanos</h2>
+                    <p>¿Tienes preguntas sobre nuestros productos o quieres ser parte del cambio?</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span aria-hidden="true">📧</span>
+                            <span>hola@ecotienda.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span aria-hidden="true">📞</span>
+                            <span>+57 300 123 4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <span aria-hidden="true">📍</span>
+                            <span>Medellín, Colombia</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm" novalidate aria-label="Formulario de contacto">
+                    <div class="form-group">
+                        <label for="contactName">Nombre completo *</label>
+                        <input type="text" id="contactName" placeholder="Ej: Ana María Rodríguez" required aria-required="true">
+                        <span class="form-error" id="nameError" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Correo electrónico *</label>
+                        <input type="email" id="contactEmail" placeholder="ejemplo@correo.com" required aria-required="true">
+                        <span class="form-error" id="emailError" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone">Teléfono</label>
+                        <input type="tel" id="contactPhone" placeholder="300 123 4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Asunto</label>
+                        <select id="contactSubject" aria-label="Asunto del mensaje">
+                            <option value="">Selecciona un asunto</option>
+                            <option value="productos">Información de productos</option>
+                            <option value="pedidos">Seguimiento de pedidos</option>
+                            <option value="sugerencias">Sugerencias</option>
+                            <option value="quejas">Quejas o reclamos</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Mensaje *</label>
+                        <textarea id="contactMessage" rows="4" placeholder="Escribe tu mensaje aquí..." required aria-required="true"></textarea>
+                        <span class="form-error" id="messageError" role="alert"></span>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="contactConsent" required aria-required="true">
+                        <label for="contactConsent">Acepto la <a href="#" aria-label="Política de privacidad">política de privacidad</a> y el tratamiento de mis datos *</label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span aria-hidden="true">✉️</span> Enviar mensaje
+                    </button>
+                    <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+        </section>
+
+        <section class="newsletter-section" aria-labelledby="newsletter-title">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h2 id="newsletter-title">📫 Suscríbete a nuestro boletín</h2>
+                    <p>Recibe ofertas exclusivas, consejos sostenibles y novedades de nuestros productos.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-group">
+                            <input type="email" id="newsletterEmail" placeholder="Tu correo electrónico" required aria-required="true">
+                            <button type="submit" id="newsletterBtn">Suscribirme</button>
+                        </div>
+                        <span class="newsletter-message" id="newsletterMessage" role="status" aria-live="polite"></span>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span aria-hidden="true">🌿</span>
+                        <span>EcoTienda</span>
+                    </div>
+                    <p class="footer-description">
+                        Tienda online de productos sostenibles comprometidos con el cuidado del planeta.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram" class="social-link">📷</a>
+                        <a href="#" aria-label="Facebook" class="social-link">👍</a>
+                        <a href="#" aria-label="Twitter" class="social-link">🐦</a>
+                        <a href="#" aria-label="YouTube" class="social-link">▶️</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Cómo comprar</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="#">🏠 Hogar sostenible</a></li>
+                        <li><a href="#">👕 Moda ecológica</a></li>
+                        <li><a href="#">🍎 Alimentos orgánicos</a></li>
+                        <li><a href="#">🧴 Cuidado personal</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><span aria-hidden="true">📧</span> hola@ecotienda.com</li>
+                        <li><span aria-hidden="true">📞</span> +57 300 123 4567</li>
+                        <li><span aria-hidden="true">📍</span> Medellín, Colombia</li>
+                        <li><span aria-hidden="true">🕐</span> Lun - Vie: 8am - 6pm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-payments">
+                    <span aria-hidden="true">💳</span>
+                    <span aria-hidden="true">🏦</span>
+                    <span aria-hidden="true">📱</span>
+                    <span>Medios de pago seguros</span>
+                </div>
+                <div class="footer-copyright">
+                    &copy; 2026 EcoTienda · Todos los derechos reservados
+                    <span class="footer-dev">Desarrollado por <strong>Juan David Buitrago Cuellar</strong> · SENA</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="cartModal" role="dialog" aria-labelledby="cartModalTitle" aria-modal="true" hidden>
+        <div class="modal-overlay" id="cartOverlay"></div>
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="cartModalTitle">🛒 Mi carrito</h2>
+                <button class="modal-close" id="cartModalClose" aria-label="Cerrar carrito">✕</button>
+            </header>
+            <div class="modal-body" id="cartBody">
+                <div id="cartItems">
+                    <p class="empty-cart-message">🛒 Tu carrito está vacío</p>
+                </div>
+                <div id="cartSummary" hidden>
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span class="cart-total-price" id="cartTotalPrice">$0</span>
+                    </div>
+                    <button class="checkout-btn" id="checkoutBtn">Proceder al pago →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="loginModal" role="dialog" aria-labelledby="loginModalTitle" aria-modal="true" hidden>
+        <div class="modal-overlay" id="loginOverlay"></div>
+        <div class="modal-content modal-sm">
+            <header class="modal-header">
+                <h2 id="loginModalTitle">👤 Iniciar sesión</h2>
+                <button class="modal-close" id="loginModalClose" aria-label="Cerrar">✕</button>
+            </header>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Correo electrónico</label>
+                        <input type="email" id="loginEmail" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Iniciar sesión</button>
+                </form>
+                <p class="modal-footer-text">
+                    ¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer" role="status" aria-live="polite">
+    </div>
+
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Volver al inicio" hidden>
+        <span aria-hidden="true">↑</span>
+    </button>
+
+    <div class="cookie-consent" id="cookieConsent" role="dialog" aria-label="Aviso de cookies">
+        <div class="cookie-content">
+            <p>
+                🍪 Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra 
+                <a href="#">política de cookies</a>.
+            </p>
+            <div class="cookie-actions">
+                <button class="cookie-accept" id="cookieAccept">Aceptar</button>
+                <button class="cookie-decline" id="cookieDecline">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
